@@ -9,7 +9,7 @@ RUN apt-get update \
  && python setup.py install \
  && apt-get clean \
  && echo 'set paste' >> /root/.vimrc \
- && echo 'ls --color' >> /root/.bashrc \
+ && echo "alias ls='ls --color'" >> /root/.bashrc \
  && echo "export PS1='\[\033[01;36m\]acitoolkit-2.7.13\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> /root/.bashrc
 WORKDIR /opt/acitoolkit
 CMD ["/bin/bash"]
