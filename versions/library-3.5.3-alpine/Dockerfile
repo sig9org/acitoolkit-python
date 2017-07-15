@@ -1,15 +1,15 @@
-# VERSION 1.0
-FROM python:2.7.13-wheezy
+FROM python:3.5.3-alpine
 
-RUN apt-get update \
- && apt-get -y install git graphviz-dev pkg-config vim-tiny \
+RUN apk update \
+ && apk add bash gcc git graphviz-dev musl-dev vim \
+ && mkdir /opt \
  && cd /opt \
  && git clone -b develop https://github.com/sig9org/acitoolkit \
  && cd acitoolkit \
  && python setup.py install \
- && apt-get clean \
+ && rm -rf /var/cache/apk/* \
  && echo 'set paste' >> /root/.vimrc \
  && echo "alias ls='ls --color'" >> /root/.bashrc \
- && echo "export PS1='\[\033[01;36m\]atk-2.7.13\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> /root/.bashrc
+ && echo "export PS1='\[\033[01;36m\]atk-3.5.3\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> /root/.bashrc
 WORKDIR /opt/acitoolkit
 CMD ["/bin/bash"]
