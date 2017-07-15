@@ -11,6 +11,5 @@ RUN apt-get update \
  && echo 'set paste' >> /root/.vimrc \
  && echo 'ls --color' >> /root/.bashrc \
  && export PS1='\[\033[01;36m\]acitoolkit-2.7.13\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-ADD vimrc /root/.vimrc
 WORKDIR /opt/acitoolkit
 CMD ["/bin/bash"]
